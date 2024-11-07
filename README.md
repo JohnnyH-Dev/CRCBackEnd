@@ -1,2 +1,2 @@
 # CRCBackEnd
-The backend of my Cloud Resume Challenge along with Terraform Configurations
+The backend of my Cloud Resume Challenge along with Terraform configurations
