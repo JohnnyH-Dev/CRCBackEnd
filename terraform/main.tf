@@ -9,7 +9,7 @@ terraform {
     organization = "JohnnyCRC"
 
     workspaces {
-      name = "CRCFBackEnd"
+      name = "CRCBackEnd"
     }
   }
 }
