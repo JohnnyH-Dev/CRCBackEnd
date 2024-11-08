@@ -1,4 +1,5 @@
 import boto3
+import json
 
 client = boto3.client('dynamodb')
 table_name = 'CRCVisitorCounter'
@@ -32,10 +33,11 @@ def lambda_handler(event, context):
         }
     )
     
-    # Format response in JSON
-    response = {'visitor_counter': visitor_count}
-    return response
-
+    # Return the response in the correct format for API Gateway
+    return {
+        "statusCode": 200,
+        "body": json.dumps({"visitor_counter": visitor_count})  # Convert the dictionary to a JSON string
+    }
 
 
 
