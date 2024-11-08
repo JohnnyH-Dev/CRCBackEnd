@@ -19,4 +19,8 @@ resource "aws_dynamodb_table_item" "initial_visitor_count" {
     "visitor_count": {"N": "0"}
   }
   ITEM
+
+  lifecycle {
+    ignore_changes = [ item ]
+  }
 }
