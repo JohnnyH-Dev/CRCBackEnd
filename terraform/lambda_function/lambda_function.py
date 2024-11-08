@@ -36,7 +36,12 @@ def lambda_handler(event, context):
     # Return the response in the correct format for API Gateway
     return {
         "statusCode": 200,
-        "body": json.dumps({"visitor_counter": visitor_count})  # Convert the dictionary to a JSON string
+        "body": json.dumps({"visitor_counter": visitor_count}),
+        "headers": {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Content-Type": "application/json"
+        }
     }
 
 
