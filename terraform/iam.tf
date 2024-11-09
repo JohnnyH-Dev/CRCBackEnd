@@ -19,7 +19,7 @@ data "aws_iam_policy_document" "dynamodb_lambda" {
         "dynamodb:UpdateItem",
         "dynamodb:GetItem"
       ]
-      resources = [ aws_dynamodb_table.main.arn ]
+      resources = [ aws_dynamodb_table.visitor_table.arn ]
     }
   
 }

@@ -1,26 +1,27 @@
-resource "aws_dynamodb_table" "main" {
-    name = "CRCVisitorCounter"
-    hash_key = "counter_ID"
-    billing_mode = "PAY_PER_REQUEST"
+resource "aws_dynamodb_table" "visitor_table" {
+  name         = "visitor_count"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "visitorCount"
 
-    attribute {
-      name = "counter_ID"
-      type = "S"
-    }
+  #table attributes
+  attribute {
+    name = "visitorCount"
+    type = "S"
+  }
 }
 
-resource "aws_dynamodb_table_item" "initial_visitor_count" {
-  table_name = aws_dynamodb_table.main.name
-  hash_key = "counter_ID"
+resource "aws_dynamodb_table_item" "add_item_dynamodb" {
+  table_name = aws_dynamodb_table.visitor_table.name
+  hash_key   = aws_dynamodb_table.visitor_table.hash_key
 
   item = <<ITEM
-  {
-    "counter_ID": {"S": "visitor_counter"},
-    "visitor_count": {"N": "0"}
-  }
-  ITEM
+{
 
+  "visitorCount": {"S": "user"},
+  "visitor": {"N": "0"}
+}
+ITEM
   lifecycle {
-    ignore_changes = [ item ]
+    ignore_changes = all
   }
 }
