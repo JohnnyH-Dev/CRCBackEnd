@@ -111,3 +111,31 @@ resource "aws_api_gateway_integration_response" "options_integration_response" {
         "method.response.header.Access-Control-Allow-Origin"  = "'*'"
     }
 }
+
+# Define the method response for POST, including CORS headers
+resource "aws_api_gateway_method_response" "post_response" {
+    rest_api_id = aws_api_gateway_rest_api.main.id
+    resource_id = aws_api_gateway_resource.main.id
+    http_method = aws_api_gateway_method.main.http_method
+    status_code = "200"
+
+    response_parameters = {
+        "method.response.header.Access-Control-Allow-Headers" = true
+        "method.response.header.Access-Control-Allow-Methods" = true
+        "method.response.header.Access-Control-Allow-Origin"  = true
+    }
+}
+
+# Define the integration response for the POST method to include CORS headers
+resource "aws_api_gateway_integration_response" "post_integration_response" {
+    rest_api_id = aws_api_gateway_rest_api.main.id
+    resource_id = aws_api_gateway_resource.main.id
+    http_method = aws_api_gateway_method.main.http_method
+    status_code = aws_api_gateway_method_response.post_response.status_code
+
+    response_parameters = {
+        "method.response.header.Access-Control-Allow-Headers" = "'Content-Type'"
+        "method.response.header.Access-Control-Allow-Methods" = "'OPTIONS,POST'"
+        "method.response.header.Access-Control-Allow-Origin"  = "'*'"
+    }
+}
