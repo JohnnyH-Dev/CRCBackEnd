@@ -6,6 +6,8 @@ Check out the frontend website: [www.johnnyhuang.dev](https://www.johnnyhuang.de
 
 Check out the blog: [Johnny's CRC Blog](https://leeward-fig-f44.notion.site/Johnny-s-CRC-Blog-11b96dded323802081bec3c41125e3c5)
 
+Check out the frontend repository: https://github.com/JohnnyH-Dev/CRCFrontEnd
+
 ## Project Overview
 
 ![Diagram of Cloud Resume Challenge Architecture](images/CRCDiagram.png)
